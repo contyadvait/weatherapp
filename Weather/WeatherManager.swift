@@ -22,7 +22,7 @@ struct WeatherData: Codable, Identifiable {
     let elevation: Double
     let hourlyUnits: HourlyUnits
     let hourly: HourlyData
-
+    
     enum CodingKeys: String, CodingKey {
         case latitude
         case longitude
@@ -42,7 +42,7 @@ struct HourlyUnits: Codable {
     let temperature2M: String
     let weatherCode: String
     let isDay: String
-
+    
     enum CodingKeys: String, CodingKey {
         case time
         case precipitation
@@ -58,7 +58,7 @@ struct HourlyData: Codable {
     let temperature2M: [Double]
     let weatherCode: [Int]
     let isDay: [Int]
-
+    
     enum CodingKeys: String, CodingKey {
         case time
         case precipitation
@@ -126,4 +126,61 @@ class WeatherManager: ObservableObject {
     }
     
     
+}
+
+struct WeatherDataRead: Identifiable {
+    let id = UUID()
+    var hour: String
+    var textHour: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm"
+
+        guard let date = formatter.date(from: hour) else {
+          return "Loading..." // Handle invalid date format
+        }
+
+        formatter.dateFormat = "hh a"
+        return formatter.string(from: date)
+    }
+    var daylight: Int
+    var code: Int
+    var iconForecast: String {
+        if code == 0 {
+            if daylight == 1 {
+                return "sun.max.fill"
+            } else {
+                return "moon.fill"
+            }
+        } else if [1, 2, 3].contains(code) {
+            if daylight == 1 {
+                return "cloud.sun.fill"
+            } else {
+                return "cloud.moon.fill"
+            }
+        } else if [45, 48].contains(code) {
+            return "cloud.fog.fill"
+        } else if [51, 53, 55].contains(code) {
+            if daylight == 1 {
+                return "sun.rain.fill"
+            } else {
+                return "cloud.moon.rain.fill"
+            }
+        } else if [56, 57].contains(code) {
+            return "cloud.drizzle.fill"
+        } else if [61, 63, 65, 66, 67].contains(code) {
+            return "cloud.rain.fill"
+        } else if [71, 73, 75, 77, 85, 86].contains(code) {
+            return "cloud.snow.fill"
+        } else if code == 77 {
+            return "snowflake"
+        } else if [95, 96, 99].contains(code) {
+            return "cloud.bolt.rain.fill"
+        } else {
+            return "exclamationmark.circle.fill"
+        }
+    }
+    var temperature: Double
+    var temperatureValue: String {
+        return String(format: "%.1f", temperature)
+    }
 }
