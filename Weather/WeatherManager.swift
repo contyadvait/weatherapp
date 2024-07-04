@@ -11,7 +11,8 @@ import OpenMeteoSdk
 import Foundation
 
 // Define the structures to match the JSON
-struct WeatherData: Codable {
+struct WeatherData: Codable, Identifiable {
+    let id = UUID()
     let latitude: Double
     let longitude: Double
     let generationTimeMS: Double
