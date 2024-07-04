@@ -72,7 +72,7 @@ struct HourlyData: Codable {
 
 class WeatherManager: ObservableObject {
     func testClass() async -> Bool {
-        let url = URL(string: "https://api.open-meteo.com/v1/forecast?latitude=1.342128&longitude=103.9568&hourly=precipitation,temperature_2m,weather_code,is_day&timezone=Asia%2FSingapore")!
+        let url = URL(string: "https://api.open-meteo.com/v1/forecast?latitude=1.34&longitude=103.9&hourly=precipitation,temperature_2m,weather_code,is_day&timezone=Asia%2FSingapore")!
         do {
             let responses = try await WeatherApiResponse.fetch(url: url)
             return true
