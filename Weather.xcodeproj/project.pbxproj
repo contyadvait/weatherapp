@@ -11,6 +11,10 @@
 		F1557BA92C368A6900B835BA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1557BA82C368A6900B835BA /* ContentView.swift */; };
 		F1557BAB2C368A6B00B835BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1557BAA2C368A6B00B835BA /* Assets.xcassets */; };
 		F1557BAE2C368A6B00B835BA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1557BAD2C368A6B00B835BA /* Preview Assets.xcassets */; };
+		F1557BB52C368BB400B835BA /* LocationReciever.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1557BB42C368BB400B835BA /* LocationReciever.swift */; };
+		F1557BB92C36978600B835BA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1557BB72C36978100B835BA /* CoreLocation.framework */; };
+		F1557BBE2C3698EA00B835BA /* OpenMeteoSdk in Frameworks */ = {isa = PBXBuildFile; productRef = F1557BBD2C3698EA00B835BA /* OpenMeteoSdk */; };
+		F1557BC02C3698F500B835BA /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1557BBF2C3698F500B835BA /* WeatherManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +23,9 @@
 		F1557BA82C368A6900B835BA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F1557BAA2C368A6B00B835BA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F1557BAD2C368A6B00B835BA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F1557BB42C368BB400B835BA /* LocationReciever.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationReciever.swift; sourceTree = "<group>"; };
+		F1557BB72C36978100B835BA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		F1557BBF2C3698F500B835BA /* WeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +33,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1557BBE2C3698EA00B835BA /* OpenMeteoSdk in Frameworks */,
+				F1557BB92C36978600B835BA /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -37,6 +46,7 @@
 			children = (
 				F1557BA52C368A6900B835BA /* Weather */,
 				F1557BA42C368A6900B835BA /* Products */,
+				F1557BB62C36978100B835BA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -53,6 +63,8 @@
 			children = (
 				F1557BA62C368A6900B835BA /* WeatherApp.swift */,
 				F1557BA82C368A6900B835BA /* ContentView.swift */,
+				F1557BBF2C3698F500B835BA /* WeatherManager.swift */,
+				F1557BB42C368BB400B835BA /* LocationReciever.swift */,
 				F1557BAA2C368A6B00B835BA /* Assets.xcassets */,
 				F1557BAC2C368A6B00B835BA /* Preview Content */,
 			);
@@ -65,6 +77,14 @@
 				F1557BAD2C368A6B00B835BA /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F1557BB62C36978100B835BA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F1557BB72C36978100B835BA /* CoreLocation.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +103,9 @@
 			dependencies = (
 			);
 			name = Weather;
+			packageProductDependencies = (
+				F1557BBD2C3698EA00B835BA /* OpenMeteoSdk */,
+			);
 			productName = Weather;
 			productReference = F1557BA32C368A6900B835BA /* Weather.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +134,9 @@
 				Base,
 			);
 			mainGroup = F1557B9A2C368A6800B835BA;
+			packageReferences = (
+				F1557BBC2C3698EA00B835BA /* XCRemoteSwiftPackageReference "sdk" */,
+			);
 			productRefGroup = F1557BA42C368A6900B835BA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -139,6 +165,8 @@
 			files = (
 				F1557BA92C368A6900B835BA /* ContentView.swift in Sources */,
 				F1557BA72C368A6900B835BA /* WeatherApp.swift in Sources */,
+				F1557BC02C3698F500B835BA /* WeatherManager.swift in Sources */,
+				F1557BB52C368BB400B835BA /* LocationReciever.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +303,8 @@
 				DEVELOPMENT_TEAM = VYG284C3Z9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationUsageDescription = "We need your locaiton to find the place where you want the weather off";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Required for trying to find where you want the weather off";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -304,6 +334,8 @@
 				DEVELOPMENT_TEAM = VYG284C3Z9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationUsageDescription = "We need your locaiton to find the place where you want the weather off";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Required for trying to find where you want the weather off";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -344,6 +376,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F1557BBC2C3698EA00B835BA /* XCRemoteSwiftPackageReference "sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/open-meteo/sdk.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F1557BBD2C3698EA00B835BA /* OpenMeteoSdk */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F1557BBC2C3698EA00B835BA /* XCRemoteSwiftPackageReference "sdk" */;
+			productName = OpenMeteoSdk;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F1557B9B2C368A6800B835BA /* Project object */;
 }
